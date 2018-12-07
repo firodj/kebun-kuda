@@ -44,7 +44,6 @@ set(SOFTMMU_HEADERS
   ${UNICORN_DIR}/qemu/tcg/tcg-runtime.h
   ${UNICORN_DIR}/qemu/tcg/tcg.h
   ${UNICORN_DIR}/qemu/x86_64.h
-#  ${CMAKE_CURRENT_SOURCE_DIR}/nix/config-host.h
   ${CMAKE_CURRENT_SOURCE_DIR}/x86_64-softmmu/config-target.h
 )
 
@@ -207,9 +206,6 @@ set(UNICORN_HEADERS
   ${UNICORN_DIR}/qemu/include/sysemu/os-win32.h
   ${UNICORN_DIR}/qemu/include/sysemu/sysemu.h
   ${UNICORN_DIR}/qemu/vl.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/nix/config-host.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-types.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-visit.h
 )
 
 set(UNICORN_SRCS
@@ -249,8 +245,6 @@ set(UNICORN_SRCS
   ${UNICORN_DIR}/qemu/util/qemu-timer-common.c
   ${UNICORN_DIR}/qemu/vl.c
   ${UNICORN_DIR}/uc.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-types.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-visit.c
 )
 
 if (MSVC)
@@ -258,12 +252,26 @@ if (MSVC)
     ${UNICORN_DIR}/qemu/util/oslib-win32.c
     ${UNICORN_DIR}/qemu/util/qemu-thread-win32.c
     ${UNICORN_DIR}/qemu/util/qemu-error.c
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/win/qapi-types.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/win/qapi-visit.c
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/win/config-host.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/win/qapi-types.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/win/qapi-visit.h
   )
 else()
   # GCC or Clang
   set(UNICORN_SRCS ${UNICORN_SRCS}
     ${UNICORN_DIR}/qemu/util/oslib-posix.c
     ${UNICORN_DIR}/qemu/util/qemu-thread-posix.c
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-types.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-visit.c
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/nix/config-host.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-types.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/nix/qapi-visit.h
   )
 endif()
 
