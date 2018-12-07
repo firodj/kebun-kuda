@@ -7,7 +7,7 @@ void hook_mem(uc_engine *uc, uc_mem_type type,
 {
     uint64_t rip;
     uc_reg_read(uc, UC_X86_REG_RIP, &rip);
-    printf("%p %s %p %d\n", rip, (type == UC_MEM_WRITE) ? "write" : type == UC_MEM_READ ? "read " : " unknown", address, size);
+    printf("%llx %s %llx %d\n", rip, (type == UC_MEM_WRITE) ? "write" : "read", address, size);
 }
 
 int main(int argc, char **argv)
