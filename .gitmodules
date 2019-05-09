@@ -1,3 +1,9 @@
 [submodule "unicorn"]
 	path = unicorn
 	url = https://github.com/unicorn-engine/unicorn.git
+[submodule "keystone"]
+	path = keystone
+	url = https://github.com/keystone-engine/keystone.git
+[submodule "capstone"]
+	path = capstone
+	url = https://github.com/aquynh/capstone.git

@@ -7,3 +7,5 @@ set(UNICORN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/unicorn)
 
 add_subdirectory(unicorn_cmake)
 add_subdirectory(multiple_hook_mem_unaligned)
+add_subdirectory(keystone)
+add_subdirectory(capstone)
