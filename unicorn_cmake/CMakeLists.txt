@@ -104,7 +104,7 @@ if(MSVC)
 else()
   # GCC or Clang
   target_compile_options(x86_64softmmu PRIVATE
-    "-includex86_64.h" 
+    "-includex86_64.h"
     "-I${CMAKE_CURRENT_SOURCE_DIR}/x86_64-softmmu"
   )
   target_compile_definitions(x86_64softmmu PRIVATE
@@ -113,7 +113,7 @@ else()
   )
 endif()
 
-set(UNICORN_HEADERS 
+set(UNICORN_HEADERS
   ${UNICORN_DIR}/include/list.h
   ${UNICORN_DIR}/include/qemu.h
   ${UNICORN_DIR}/include/uc_priv.h
@@ -275,18 +275,18 @@ else()
   )
 endif()
 
-add_library(unicorn_static
+add_library(unicorn-static
   ${UNICORN_HEADERS}
   ${UNICORN_SRCS}
 )
 
 if(MSVC)
   # MBCS?
-  target_compile_options(unicorn_static PRIVATE
+  target_compile_options(unicorn-static PRIVATE
     "/MT$<$<CONFIG:Debug>:d>"
     /wd4018 /wd4244 /wd4267
   )
-  target_compile_definitions(unicorn_static PRIVATE
+  target_compile_definitions(unicorn-static PRIVATE
     -D_LIB
     -D_CRT_SECURE_NO_WARNINGS
     -Dinline=__inline
@@ -306,16 +306,16 @@ if(MSVC)
   )
 else()
   # GCC or Clang
-  target_compile_options(unicorn_static PRIVATE
-    "-includex86_64.h" 
+  target_compile_options(unicorn-static PRIVATE
+    "-includex86_64.h"
     "-I${CMAKE_CURRENT_SOURCE_DIR}/nix"
   )
-  target_compile_definitions(unicorn_static PRIVATE
+  target_compile_definitions(unicorn-static PRIVATE
     -D_LIB
     -DUNICORN_HAS_X86
   )
 endif()
 
-target_link_libraries(unicorn_static
+target_link_libraries(unicorn-static
   x86_64softmmu
 )
