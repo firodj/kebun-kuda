@@ -7,14 +7,14 @@ void hook_mem(uc_engine *uc, uc_mem_type type,
 {
     uint64_t rip;
     uc_reg_read(uc, UC_X86_REG_RIP, &rip);
-    printf("%llx %s %llx %d\n", rip, (type == UC_MEM_WRITE) ? "write" : "read", address, size);
+    printf("%llx: %s %llx %d\n", rip, (type == UC_MEM_WRITE) ? "write" : "read", address, size);
 }
 
 int main(int argc, char **argv)
 {
     const uint8_t code[] = {
-        "\x48\x8b\x00"  //  mov         rax,qword ptr [rax]  
-        "\x48\x89\x01"  //   mov         qword ptr [rcx],rax  
+        "\x48\x8b\x00"  //  mov         rax,qword ptr [rax]
+        "\x48\x89\x01"  //   mov         qword ptr [rcx],rax
         "\xcc"
     };
 

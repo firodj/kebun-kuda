@@ -11,12 +11,12 @@ include_directories(SYSTEM
   ${UNICORN_DIR}/include
 )
 
-add_executable(test
+add_executable(multiple_hook_mem_unaligned
   test.cpp
 )
 
-target_link_libraries(test
-  unicorn_static
+target_link_libraries(multiple_hook_mem_unaligned
+  unicorn
 )
 
-target_compile_definitions(test PUBLIC  -D_CRT_SECURE_NO_WARNINGS)
+target_compile_definitions(multiple_hook_mem_unaligned PUBLIC -D_CRT_SECURE_NO_WARNINGS)
