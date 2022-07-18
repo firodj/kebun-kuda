@@ -1,3 +1,5 @@
+// https://github.com/unicorn-engine/unicorn/issues/1041
+
 #include <cstdio>
 #include <cinttypes>
 #include <unicorn/unicorn.h>
