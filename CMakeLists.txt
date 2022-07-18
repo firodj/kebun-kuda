@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
-project(kebun_kuda)
+
+# Workaround to fix wrong compiler on macos. (for Unicorn)
+if ((APPLE) AND (NOT CMAKE_C_COMPILER))
+    set(CMAKE_C_COMPILER "/usr/bin/cc")
+endif()
+
+project(kebun_kuda C)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
