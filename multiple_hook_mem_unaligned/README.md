@@ -19,3 +19,14 @@ Expected Output:
 3: write 2fff 8
 ```
 
+Updates:
+
+Good:
+
+```
+commit 52f90cda023abaca510d59f021c88629270ad6c0 (HEAD, tag: 1.0.3, refs/bisect/good-52f90cda023abaca510d59f021c88629270ad6c0)
+Author: Nguyen Anh Quynh <aquynh@gmail.com>
+Date:   Wed May 26 23:07:07 2021 +0800
+
+    update ChangeLog
+```
